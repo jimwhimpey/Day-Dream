@@ -10,8 +10,8 @@
 
         <link rel="shortcut icon" href="{Favicon}">
         <link rel="alternate" type="application/rss+xml" href="{RSS}">
-		<link rel="stylesheet" href="reset.css" type="text/css" media="screen" charset="utf-8" />
-		<link rel="stylesheet" href="style.css" type="text/css" media="screen" charset="utf-8" />
+		<link rel="stylesheet" href="http://static.jimwhimpey.com/tumblr/daydream/reset.css" type="text/css" media="screen" charset="utf-8" />
+		<link rel="stylesheet" href="http://static.jimwhimpey.com/tumblr/daydream/style.css" type="text/css" media="screen" charset="utf-8" />
         
         <meta name="viewport" content="width=920"/>
         <link rel="apple-touch-icon" href="http://assets.tumblr.com/images/default_avatar_128.gif"></link>
@@ -19,6 +19,27 @@
 		<style type="text/css" media="screen">
 			{CustomCSS}
 		</style>
+		
+		<script type="text/javascript" charset="utf-8" src="http://static.jimwhimpey.com/tumblr/daydream/jquery.min.js"></script>
+		
+		<script type="text/javascript" charset="utf-8">
+			
+			$(function(){
+				$('#q').focus(function(){
+					if ($('#q').attr('value') == "Search") {
+						$('#q').css('color', '#000');
+						$('#q').attr('value', '');
+					};
+				});
+				$('#q').blur(function(){
+					if ($('#q').attr('value') == "") {
+						$('#q').css('color', '#CCC');
+						$('#q').attr('value', 'Search');
+					};
+				});
+			});
+			
+		</script>
 
     </head>
 
@@ -40,7 +61,7 @@
 			<div id="header-footer"></div>
 			
 			<form action="/search" method="get" id="searchform">
-				<p><input type="search" name="q" value="" results="5" /></p>
+				<p><input id="q" type="search" name="q" value="Search" results="5" /></p>
 			</form>
 	        
    		</div>
@@ -56,7 +77,7 @@
 	
 				
 				{block:NewDayDate}
-					<div class="date"><a href="#">{Month} {DayOfMonth}{DayOfMonthSuffix}, {Year}</a></div>
+					<div class="date">{Month} {DayOfMonth}{DayOfMonthSuffix}, {Year}</div>
 				{/block:NewDayDate}
 			
 			
@@ -69,7 +90,7 @@
 						<h2>"{Quote}"</h2>
 
                         {block:Source}
-                            {Source}
+                            <p>{Source}</p>
                         {/block:Source}
 
 						<div class="permalink"><a href="{Permalink}" title="Permalink">&#9733;</a></div>
@@ -85,10 +106,10 @@
 				
                     <div class="post photo">
 	
-                        <img src="{PhotoURL-500}" alt="{PhotoAlt}"/>
+                        <div class="image">{LinkOpenTag}<img src="{PhotoURL-500}" alt="{PhotoAlt}"/>{LinkCloseTag}</div>
 
                         {block:Caption}
-                            {Caption}
+                            <p>{Caption}</p>
                         {/block:Caption}
 
 						<div class="permalink"><a href="{Permalink}" title="Permalink">&#9733;</a></div>
@@ -108,7 +129,7 @@
 						<h2><a href="{URL}" class="link" {Target}>{Name}</a></h2>
   
 						{block:Description}
-                            {Description}
+                            <p>{Description}</p>
                         {/block:Description}
 
 						<div class="permalink"><a href="{Permalink}" title="Permalink">&#9733;</a></div>
@@ -177,8 +198,10 @@
                         <p>{Video-500}</p>
 
                         {block:Caption}
-                            {Caption}
+                            <p>{Caption}</p>
                         {/block:Caption}
+
+						<div class="permalink"><a href="{Permalink}" title="Permalink">&#9733;</a></div>
 
                     </div>
 
@@ -190,11 +213,17 @@
 
 				{block:Audio}
 				
-					{AudioPlayerGrey}
+					<div class="post audio">
+				
+						{AudioPlayerWhite}
 					
-					{block:Caption}
-						<p>{Caption}</p>
-					{/block:Caption}
+						{block:Caption}
+							<p>{Caption}</p>
+						{/block:Caption}
+						
+						<div class="permalink"><a href="{Permalink}" title="Permalink">&#9733;</a></div>
+
+					</div>
 				
 				{/block:Audio}
 				
@@ -211,11 +240,11 @@
 				<div id="navigation">
 			
 					{block:PreviousPage}
-		                <a href="{PreviousPage}">&larr; Previous</a>
+		                <a href="{PreviousPage}" id="newer">Newer &rarr;</a>
 		            {/block:PreviousPage}
 
 		            {block:NextPage}
-		                <a href="{NextPage}">Next &rarr;</a>
+		                <a href="{NextPage}" id="older">&larr; Older</a>
 		            {/block:NextPage}
 	
 				</div>
@@ -226,13 +255,13 @@
 			
 				<div id="navigation">
 			
-					{block:PreviousPost}
-		                <a href="{PreviousPost}">&larr; Previous</a>
-		            {/block:PreviousPost}
-
-		            {block:NextPost}
-		                <a href="{NextPost}">Next &rarr;</a>
+					{block:NextPost}
+		                <a href="{NextPost}" id="newer">Newer &rarr;</a>
 		            {/block:NextPost}
+
+		            {block:PreviousPost}
+		                <a href="{PreviousPost}" id="older">&larr; Older</a>
+		            {/block:PreviousPost}
 	
 				</div>
 

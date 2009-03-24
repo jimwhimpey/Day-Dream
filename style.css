@@ -21,13 +21,10 @@
 			line-height: 1.8em;
 			color: #378EC5;
 			width: 750px;
-			margin: 60px auto;
-			position: relative;
+			margin: 0 auto;
 			}
-		
-			a { color: #B71F98; text-decoration: none; }
-		
-				a:hover { color: #FBD329; }
+			
+			a { text-decoration: none; }
 				
 			
 
@@ -40,22 +37,25 @@
 		width: 200px;
 		float: left;
 		text-align: right;
-		background: #288EC4 url("clouds-top.gif") no-repeat top left;
+		background: #288EC4 url("http://static.jimwhimpey.com/tumblr/daydream/clouds-top.gif") no-repeat top left;
 		color: #fff;
 		line-height: 1.5em;
+		margin: 60px 0 0 0;
 		position: relative;
 		}
 		
 		#header-footer {
 			width: 200px;
 			height: 14px;
-			background: url("clouds-bottom.gif");
+			background: url("http://static.jimwhimpey.com/tumblr/daydream/clouds-bottom.gif");
 			}
 			
 		h1 {
 			font-size: 20px;
 			font-weight: bold;
 			margin: 55px 10px 20px 10px;
+			text-shadow: #000 0 1px 1px;
+			line-height: 1.2em;
 			}
 			
 			h1 a { color: #fff; }
@@ -64,20 +64,26 @@
 				
 		#description {
 			margin: 0 10px 20px 10px;
-			font-size: 12px;
-			color: #CDE6F3;
+			font-size: 13px;
+			color: #FFF;
+			text-shadow: #0B2E41 0 1px 1px;
 			}
+			
+			#description a { color: #C3EA97; }
+			
+				#description a:hover { color: #CFCFCF; }
 			
 		#header ul {
 			margin: 0 10px 10px 10px;
 			font-weight: bold;
 			font-size: 14px;
 			line-height: 1.8em;
+			text-shadow: #000 0 1px 1px;
 			}
 			
-			#header ul li a { color: #CDE6F3; }
+			#header ul li a { color: #FFF; }
 				
-				#header ul li a:hover { color: #fff; }
+				#header ul li a:hover { color: #CFCFCF; }
 				
 		#header form {
 			position: absolute;
@@ -87,6 +93,7 @@
 			
 			#header form input {
 				width: 140px;
+				color: #CCC;
 				}
 
 
@@ -102,23 +109,17 @@
 		float: right;
 		color: #00465B;
 		padding: 20px 0 50px 0;
+		margin: 60px 0 0 0;
 		}
 		
 		.date {
 			margin: 0 0 30px 0;
+			font-weight: bold;
+			font-size: 12px;
+			color: #A5DDF9;
+			background: url("http://static.jimwhimpey.com/tumblr/daydream/cloud.gif") no-repeat 0 center;
+			padding: 0 0 0 26px;
 			}
-		
-			.date a {
-				font-weight: bold;
-				font-size: 12px;
-				color: #A5DDF9;
-				background: url("cloud.gif") no-repeat 0 center;
-				padding: 0 0 0 26px;
-				}
-			
-				.date a:hover {
-					background: #fff;
-					}
 
 		
 		
@@ -131,12 +132,17 @@
 		background: #C2EEFF;
 		border: 1px solid #C2EEFF;
 		width: 500px;
-		padding: 10px 10px -5px 10px;
+		padding: 10px 10px 0 10px;
 		margin: 0 0 30px 0;
 		-moz-border-radius: 10px;
 		-webkit-border-radius: 10px;
 		position: relative;
+		text-shadow: #FFF 0 1px 0;
 		}
+		
+		.post em { font-style: italic; }
+		
+		.post strong { font-weight: bold; }
 		
 		.post a {
 			color: #288EC4;
@@ -196,7 +202,8 @@
 		font-size: 20px;
 		font-style: italic;
 		font-weight: normal;
-		margin: 0 0 15px 0;
+		margin: 0 0 12px 0;
+		line-height: 1.5em;
 		}		
 		
 
@@ -208,6 +215,18 @@
 	++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
 	
 	.photo img { margin: 0 0 15px 0; }
+	
+	.image a {
+		padding: 0;
+		background: none;
+		border: none;
+		}
+		
+		.image a:hover {
+			border: none;
+			top: 0;
+			left: 0;
+			}
 		
 		
 		
@@ -282,7 +301,29 @@
 		NAVIGATION
 	++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
 	
-
+	#navigation {
+		font-size: 13px;
+		font-weight: bold;
+		padding: 30px 0 60px 0;
+		}
+		
+		#navigation a {
+			padding: 3px 10px;
+			background: #F1F1F1;
+			border: 1px solid #F1F1F1;
+			-moz-border-radius: 5px;
+			-webkit-border-radius: 5px;
+			color: #000;
+			}
+			
+			#navigation a:hover {
+				background: #D7D7D7;
+				border: 1px solid #D7D7D7;
+				}
+			
+		#newer { float: right; }
+			
+		#older { float: left; }
 		
 		
 		
