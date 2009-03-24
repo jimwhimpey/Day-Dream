@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+    <head>
+
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+        <title>{Title}</title>
+
+        <link rel="shortcut icon" href="{Favicon}">
+        <link rel="alternate" type="application/rss+xml" href="{RSS}">
+		<link rel="stylesheet" href="http://misc.jimwhimpey.com/tumblr/downpour/reset.css" type="text/css" media="screen" charset="utf-8" />
+		<link rel="stylesheet" href="http://misc.jimwhimpey.com/tumblr/downpour/style.css" type="text/css" media="screen" charset="utf-8" />
+        
+        <meta name="viewport" content="width=920"/>
+        <link rel="apple-touch-icon" href="http://assets.tumblr.com/images/default_avatar_128.gif"></link>
+
+		<!-- DEFAULT COLORS -->
+        <meta name="color:Background" content="#141721"/>
+		<meta name="color:Text" content="#8DA1BD"/>
+		<meta name="color:Links" content="#AEF23C"/>
+		<meta name="color:Links Hover" content="#FBD329"/>
+		<meta name="color:Heading" content="#FF84C7"/>
+		<meta name="color:Heading Hover" content="#FBD329"/>
+		<meta name="color:Description" content="#D34C75"/>
+		<meta name="color:Permalink" content="#597C1D"/>
+		<meta name="color:Permalink Hover" content="#FBD329"/>
+		<meta name="color:Permalink Background" content="#292D49"/>
+		<meta name="color:Text Alt" content="#304156"/>
+
+		<style type="text/css" media="screen">
+			
+			{CustomCSS}
+			
+			body {
+				background: {color:Background};
+				color: {color:Text};
+				}
+			
+				a { color: {color:Links}; }
+			
+					a:hover { color: {color:Links Hover}; }
+
+			#header h1 a { color: {color:Heading}; }
+			
+				#header h1 a:hover { color: {color:Heading Hover}; }
+				
+			#description { color: {color:Description}; }
+			
+			.permalink a { background: {color:Permalink Background}; color: {color:Permalink}; }		
+				
+				.permalink a:hover { color: {color:Permalink Hover}; }
+				
+			#footer, .quote p, .photo p, .video p, .audio p, #content .conversation, .text blockquote { color: {color:Text Alt}; }
+
+			
+		</style>
+
+    </head>
+
+    <body>
+	
+	
+	
+		<div id="header">
+			<h1><a href="/">{Title}</a></h1>
+			{block:Description}
+	            <p id="description">{Description}</p>
+	        {/block:Description}
+   		</div>
+
+
+
+
+        <div id="content">
+	  				
+	
+            {block:Posts}
+	
+				
+				{block:Quote}
+				
+					<div class="quote post">
+				
+					    <h2>"{Quote}"</h2>
+					
+						{block:Source}
+                            <p>{Source}</p>
+                        {/block:Source}
+
+						<div class="permalink">
+							<p class="date"><a href="{Permalink}">{Timestamp}</a></p>
+						</div>
+				
+					</div>
+				
+				{/block:Quote}
+                
+				
+				{block:Photo}
+				
+					<div class="photo post">
+						
+						{LinkOpenTag}
+					    	<img src="{PhotoURL-500}" alt="{PhotoAlt}"/>
+						{LinkCloseTag}
+					
+						{block:Caption}
+                            <p>{Caption}</p>
+                        {/block:Caption}
+    
+						<div class="permalink">
+							<p class="date"><a href="{Permalink}">{Timestamp}</a></p>
+						</div>
+
+					</div>
+                
+                {/block:Photo}
+
+
+ 				{block:Video}
+				
+					<div class="video post">
+				
+						{Video-500}
+					
+						{block:Caption}
+                            <p>{Caption}</p>
+                        {/block:Caption}
+    
+						<div class="permalink">
+							<p class="date"><a href="{Permalink}">{Timestamp}</a></p>
+						</div>
+
+					</div>
+                
+                {/block:Video}   
+                
+                
+				{block:Link}
+
+					<div class="link post">
+
+					    <h2><a href="{URL}" {Target}>{Name}</a></h2>
+    
+						{block:Description}
+                            <p>{Description}</p>
+                        {/block:Description}
+        
+						<div class="permalink">
+							<p class="date"><a href="{Permalink}">{Timestamp}</a></p>
+						</div>
+					</div>
+				
+				{/block:Link}
+                
+
+				{block:Chat}
+                
+					<div class="conversation post">
+						
+						{block:Title}
+                            <h2>{Title}</h2>
+                        {/block:Title}
+
+						<ul>
+							{block:Lines}
+								<li class="member{UserNumber}">
+									{block:Label}
+                                        <span class="label">{Label}</span>
+                                    {/block:Label}
+									{Line}
+								</li>
+							{/block:Lines}
+						</ul>
+				
+						<div class="permalink">
+							<p class="date"><a href="{Permalink}">{Timestamp}</a></p>
+						</div>
+				
+					</div>
+					
+				{/block:Chat}
+                
+                    
+                {block:Text}
+
+                    <div class="text post">
+	
+                        {block:Title}
+                            <h2>{Title}</h2>
+                        {/block:Title}
+
+                        {Body}
+
+						<div class="permalink">
+							<p class="date"><a href="{Permalink}">{Timestamp}</a></p>
+						</div>
+
+                    </div>
+
+                {/block:Text}
+
+
+				{block:Audio}
+					
+					<div class="post audio">
+					
+						{AudioPlayer}
+					
+						{block:Caption}
+							<p>{Caption}</p>
+						{/block:Caption}
+					
+						{block:ExternalAudio}
+							<p><a href="{ExternalAudioURL}">Download</a></p>
+						{/block:ExternalAudio}
+						
+						<div class="permalink">
+							<p class="date"><a href="{Permalink}">{Timestamp}</a></p>
+						</div>
+						
+					</div>
+				
+				{/block:Audio}
+                   
+
+			{/block:Posts}
+				
+
+
+
+			{block:Pagination}
+
+				<div id="navigation">
+   
+					{block:PreviousPage}
+	                	<a href="{PreviousPage}" id="nav-prev">&larr; Previous</a>
+		            {/block:PreviousPage}
+
+		            {block:NextPage}
+		                <a href="{NextPage}" id="nav-next">Next &rarr;</a>
+		            {/block:NextPage}
+
+				</div>
+
+			 {/block:Pagination}
+			
+			{block:PermalinkPagination}
+				
+				<div id="navigation">
+					
+					{block:PreviousPost}
+	                	<a href="{PreviousPost}" id="nav-prev">&larr; Previous</a>
+		            {/block:PreviousPost}
+
+		            {block:NextPost}
+		                <a href="{NextPost}" id="nav-next">Next &rarr;</a>
+		            {/block:NextPost}
+	
+				</div>
+			
+			{/block:PermalinkPagination}
+			
+			
+			
+	
+			<!-- Footer -->
+			<div id="footer">
+
+				<form action="/search" method="get" id="searchform">
+					<p><input type="search" name="q" value="" results="5" /></p>
+				</form>
+
+				<p id="attribution">
+					<a href="http://www.tumblr.com">Tumblr</a> powered. 
+					<a href="http://github.com/jimwhimpey/downpour/tree/master">Downpour</a> by 
+					<a href="http://valhallaisland.com">Jim Whimpey</a>.
+				</p>
+			
+			</div>
+			
+			
+            
+
+     
+        </div>
+      
+    </body>
+
+</html>
