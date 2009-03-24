@@ -6,15 +6,19 @@
 
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 
-        <title>Untitled</title>
+        <title>{Title} {block:PostTitle} {PostTitle} {/block:PostTitle}</title>
 
-        <link rel="shortcut icon" href="http://assets.tumblr.com/images/default_avatar_16.gif">
-        <link rel="alternate" type="application/rss+xml" href="http://demo.tumblr.com/rss">
+        <link rel="shortcut icon" href="{Favicon}">
+        <link rel="alternate" type="application/rss+xml" href="{RSS}">
 		<link rel="stylesheet" href="reset.css" type="text/css" media="screen" charset="utf-8" />
 		<link rel="stylesheet" href="style.css" type="text/css" media="screen" charset="utf-8" />
         
         <meta name="viewport" content="width=920"/>
         <link rel="apple-touch-icon" href="http://assets.tumblr.com/images/default_avatar_128.gif"></link>
+
+		<style type="text/css" media="screen">
+			{CustomCSS}
+		</style>
 
     </head>
 
@@ -22,14 +26,15 @@
 	
 		<div id="header">
 			
-			<h1><a href="/">Day Dream</a></h1>
-			
-	        <p id="description">The successor to the extremely popular but now unavailable WordPress 
-				theme, Day Dream. Now for Tumblr. Then this text is just for a little filler.</p>
+			<h1><a href="/">{Title}</a></h1>
+						
+			{block:Description}
+	            <p id="description">{Description}</p>
+	        {/block:Description}
 				
 			<ul>
-				<li><a href="#">Archive</a></li>
-				<li><a href="#">Subscribe</a></li>
+				<li><a href="/archive">Archive</a></li>
+				<li><a href="{RSS}">Subscribe</a></li>
 			</ul>
 				
 			<div id="header-footer"></div>
@@ -45,118 +50,204 @@
 
         <div id="content">
 	  								
+			
+			{block:Posts}
+				
 	
+				
+				{block:NewDayDate}
+					<div class="date"><a href="#">{Month} {DayOfMonth}{DayOfMonthSuffix}, {Year}</a></div>
+				{/block:NewDayDate}
+			
+			
+			
+				
+				{block:Quote}
+				
+                    <div class="post quote">
 	
-			<div class="date"><a href="#">May 12th, 2008</a></div>
+						<h2>"{Quote}"</h2>
+
+                        {block:Source}
+                            {Source}
+                        {/block:Source}
+
+						<div class="permalink"><a href="{Permalink}" title="Permalink">&#9733;</a></div>
+
+                    </div>
+
+                {/block:Quote}
+				
 			
-			
-			
+
+
+				{block:Photo}
+				
+                    <div class="post photo">
 	
-			<div class="quote post">
-		
-			    <h2>"It does not matter how slow you go so long as you do not stop."</h2>
+                        <img src="{PhotoURL-500}" alt="{PhotoAlt}"/>
+
+                        {block:Caption}
+                            {Caption}
+                        {/block:Caption}
+
+						<div class="permalink"><a href="{Permalink}" title="Permalink">&#9733;</a></div>
+
+                    </div>
+
+                {/block:Photo}
+
+
 				
-				<p>Wisdom of <a href="http://en.wikipedia.org/wiki/Confucius">Confucius</a>.</p>
+                
 				
-				<div class="permalink"><a href="#">&#9733;</a></div>
-		
-			</div>
+				{block:Link}
 				
-			
+					<div class="link post">
 
-				
-			<div class="photo post">
-						
-				<img src="http://1.media.tumblr.com/235_r4_500.jpg" alt="Passing through Times Square by&nbsp;Mareen Fischinger"/>
-						
-				<p>Passing through Times Square by <a href="http://www.mareenfischinger.com/">Mareen Fischinger</a></p>
-
-				<div class="permalink"><a href="#">&#9733;</a></div>
-
-			</div>
-            
-
-
-			<div class="date"><a href="#">December 5th, 2008</a></div>
-
-
-
-
-			<div class="link post">
-
-			    <h2><a href="http://" >My favorite web site</a></h2>
+						<h2><a href="{URL}" class="link" {Target}>{Name}</a></h2>
   
-				<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>      
-				
-			</div>
-				
-				
-                
+						{block:Description}
+                            {Description}
+                        {/block:Description}
 
-			<div class="conversation post">
-						
-				<ul>
-							
-					<li class="member1">
-						<span class="label">Jack:</span> Hey, you know what sucks?
-					</li>
-							
-					<li class="member2">
-						<span class="label">Lindsey:</span> vaccuums
-					</li>
-							
-					<li class="member1">
-						<span class="label">Jack:</span> Hey, you know what sucks in a metaphorical sense?
-					</li>
-							
-					<li class="member2">
-						<span class="label">Lindsey:</span> black holes
-					</li>
-							
-					<li class="member1">
-						<span class="label">Jack:</span> Hey, you know what just isn&#039;t cool?
-					</li>
-							
-					<li class="member2">
-						<span class="label">Lindsey:</span> lava?
-					</li>
-							
-				</ul>
+						<div class="permalink"><a href="{Permalink}" title="Permalink">&#9733;</a></div>
 				
-			</div>
+					</div>
 					
+				{/block:Link}
+				
+				
+				
 				
                 
-                    
-			<div class="text post">
+				{block:Chat}
+				
+					<div class="conversation post">
+						
+						{block:Title}
+                            <h3>{Title}</h3>
+                        {/block:Title}
+
+                        <ul>
+                            {block:Lines}
+                                <li class="member{UserNumber}">
+                                    {block:Label}
+                                        <span class="label">{Label}</span>
+                                    {/block:Label}
+
+                                    {Line}
+                                </li>
+                            {/block:Lines}
+                        </ul>
+
+						<div class="permalink"><a href="{Permalink}" title="Permalink">&#9733;</a></div>
+				
+					</div>
+
+				{/block:Chat}
+				
+				
+				
+				
+                
+				{block:Text}
+				
+					<div class="text post">
 	
- 				<h2>An example post</h2>
+						{block:Title}
+							<h2>{Title}</h2>
+	                    {/block:Title}
                 
-				<p>Lorem ipsum dolor sit amet, consectetuer <a href="http:///">adipiscing elit</a>. Aliquam nisi lorem, pulvinar id, commodo feugiat, vehicula et, mauris. Aliquam mattis porta urna. Maecenas dui neque, rhoncus sed, vehicula vitae, auctor at, nisi. Aenean id massa ut lacus molestie porta. Curabitur sit amet quam id libero suscipit venenatis.</p>
+						{Body}
 
-				<ul>
-					<li>Lorem ipsum dolor sit amet.</li>
-					<li>Consectetuer adipiscing elit. </li>
-					<li>Nam at tortor quis ipsum tempor aliquet.</li>
-				</ul>
-				
-				<p>Cum sociis <a href="http:///">natoque penatibus</a> et magnis dis parturient montes, nascetur ridiculus mus. Suspendisse sed ligula. Sed volutpat odio non turpis gravida luctus. Praesent elit pede, iaculis facilisis, vehicula mattis, tempus non, arcu.</p>
-				
-				<blockquote>Donec placerat mauris commodo dolor. Nulla tincidunt. Nulla vitae augue.</blockquote>
-				
-				<p>Suspendisse ac pede. Cras <a href="http:///">tincidunt pretium</a> felis. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Pellentesque porttitor mi id felis. Maecenas nec augue. Praesent a quam pretium leo congue accumsan.</p>
+						<div class="permalink"><a href="{Permalink}" title="Permalink">&#9733;</a></div>
 
-			</div>
+					</div>
+					
+				{/block:Text}
 
-                
+
+
+				
+				{block:Video}
+				
+                    <div class="post video">
+	
+                        <p>{Video-500}</p>
+
+                        {block:Caption}
+                            {Caption}
+                        {/block:Caption}
+
+                    </div>
+
+                {/block:Video}
+
+
+
+
+
+				{block:Audio}
+				
+					{AudioPlayerGrey}
+					
+					{block:Caption}
+						<p>{Caption}</p>
+					{/block:Caption}
+				
+				{/block:Audio}
+				
+				
+
+
+
+			{/block:Posts}
+			
+			
+
+			{block:Pagination}
+			
+				<div id="navigation">
+			
+					{block:PreviousPage}
+		                <a href="{PreviousPage}">&larr; Previous</a>
+		            {/block:PreviousPage}
+
+		            {block:NextPage}
+		                <a href="{NextPage}">Next &rarr;</a>
+		            {/block:NextPage}
+	
+				</div>
+
+			 {/block:Pagination}
+			
+			{block:PermalinkPagination}
+			
+				<div id="navigation">
+			
+					{block:PreviousPost}
+		                <a href="{PreviousPost}">&larr; Previous</a>
+		            {/block:PreviousPost}
+
+		            {block:NextPost}
+		                <a href="{NextPost}">Next &rarr;</a>
+		            {/block:NextPost}
+	
+				</div>
+
+			 {/block:PermalinkPagination}
+
 
 
 			
 			<div id="footer">
 
 				<p id="attribution">
+					
 					<a href="http://www.tumblr.com">Tumblr</a> powered. Day Dream theme by 
 					<a href="http://valhallaisland.com">Jim Whimpey</a>.
+					
 				</p>
 			
 			</div>
